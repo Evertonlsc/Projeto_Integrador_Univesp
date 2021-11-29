@@ -1,0 +1,16 @@
+body{
+    
+    background-color: black;
+                   max-width: 500px;
+                   width: 70%;
+                   padding: 20px;
+                   position: absolute;
+                   left: 42%;
+                   top: 45%;
+                   transform: translate(-50%, -50%);
+                   text-align: 42%;
+                   color: #fff;
+                   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;      
+                 
+}
+

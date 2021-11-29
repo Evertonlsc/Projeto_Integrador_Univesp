@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+   <head>
+        <title>Cadastro</title>
+        <script type="text/javascript">
+              var db = openDatabase("Meubanco", "2.0",  "Mybase", 4048);
+              db.transaction(function (criar){
+                      criar.executeSql("CREATE TABLE users (ID PRIMARY KEY,  nome TEXT, senha TEXT) ");
+              });
+
+
+              function salvar(){
+                      var nome = document.getElementById('nome').value;
+                      var senha = document.getElementById('senha').value;
+                      db.transaction(function(armazenar){
+                            armazenar.executeSql("INSERT INTO users (nome,senha) VALUES (?,?)", [nome,senha]);
+
+                      });
+              }
+        </script>
+   </head>
+
+   <style>
+           *{margin:0;padding: 0; box-sizing: border-box;}
+           body{
+                   background-color: #5F7CA8;
+           }
+
+           form{
+                   background-color: white;
+                   max-width: 500px;
+                   width: 70%;
+                   padding: 20px;
+                   position: absolute;
+                   left: 50%;
+                   top: 50%;
+                   transform: translate(-50%, -50%);
+           }
+           
+           form h3{
+                text-align: center;
+                color: #5F7CA8;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;      
+           }
+
+           form input[type=text],
+           form input[type=password]{
+                   width: 100%;
+                   height: 45px;
+                   border: 1px solid #ccc;
+                   padding-left: 10px;
+                   margin: 10px 0;
+           }
+
+           form input[type=submit]{
+                   width: 100%;
+                   height: 40px;
+                   cursor: pointer;
+                   background: #5F7CA8;
+                   color: white;
+                   border: 0;
+                   border-radius: 20px;
+                   transition: 1s;
+           }
+
+           form input[type=submit]:hover{
+                   background-color: #4a5f6a;
+           }
+
+           form input[type=text]:focus{
+                   outline: 0;
+           }  
+
+           form input[type=password]:focus{
+                   outline: 0;
+           }  
+
+
+   </style>
+
+<body>
+        <form onsubmit="salvar()">
+          <h3>Entrar em contato</h3>
+          <input type="text" id="nome" name="e-mail" placeholder="Digite seu e-mail..."><br>
+          <input type="password" id="senha" placeholder="Sua Senha..." name=""><br>
+          <input type="submit"  value="Enviar">
+        </form>
+
+</body>
+</html>
